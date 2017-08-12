@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <a href="/">Home</a>
+    <a href="/teachers">Teachers</a>
+    <a href="/subjects">Subjects</a>
+    <a href="/students">Students</a>
+    <br><br>
+    <%=err%>
+    <form class="" action="/students/add" method="post">
+      <fieldset>
+        <legend>Add Student</legend>
+        <input type="text" name="first_name" placeholder="first name"><br>
+        <input type="text" name="last_name" placeholder="last name"><br>
+        <input type="text" name="email" placeholder="email"><br>
+        <input type="submit" value="Add">
+      </fieldset>
+    </form>
+
+  </body>
+</html>

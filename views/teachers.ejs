@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <a href="/">Home</a>
+    <a href="/teachers">Teachers</a>
+    <a href="/subjects">Subjects</a>
+    <a href="/students">Students</a>
+    <h1>Daftar Teachers</h1>
+    <br><br>
+    <table border="1">
+      <tbody>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <%data.forEach(d=> {%>
+        <tr>
+          <td><%=d.id%></td>
+          <td><%=d.first_name%></td>
+          <td><%=d.last_name%></td>
+          <td><%=d.email%></td>
+        </tr>
+        <%})%>
+      </tbody>
+    </table>
+  </body>
+</html>
