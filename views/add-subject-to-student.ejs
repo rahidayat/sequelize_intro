@@ -2,20 +2,21 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <%- include layout/link %>
+    <%- include layout/title %>
   </head>
   <body>
     <%- include layout/nav-bar %>
     <h1>Add Subject to Student</h1>
 
-    <div class="title">
+    <div class="container">
       <form action="/students/<%=data1.id%>/addsubject" method="post">
        First Name: <%= data1.first_name %><br>
        Last Name: <%= data1.last_name %><br>
        Email: <%= data1.email %><br>
        <br>
        Choose Subject:
-        <select name= "SubjectId" class="form_control">
+        <select name= "SubjectId" >
           <% data2.forEach(s => { %>
           <option value="<%= s.id %>"><%= s.subject_name %></option>
         <% }) %>
@@ -26,6 +27,6 @@
       <br>
       <a href="/">home</a>
     </div>
-
+    <%- include layout/script %>
   </body>
 </html>
