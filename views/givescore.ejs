@@ -7,7 +7,7 @@
   </head>
 
   <body>
-
+    <%- include layout/nav-bar %>
     <h1>Input Score</h1>
     <form action="/subjects/<%=conj[0].id%>/givescore" method="post">
       Student Name: <%=conj[0].Student.first_name%> <%=conj[0].Student.last_name%> <br>

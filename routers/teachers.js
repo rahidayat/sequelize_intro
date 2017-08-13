@@ -10,8 +10,8 @@ router.get('/', (req,res) => {
   })
   .then(teachers => {
     // res.send('teacher')
-    console.log('..............................+++++++++++'+JSON.stringify(teachers,null,2))
-    // res.render('teachers', {data: teachers})
+    // console.log('..............................+++++++++++'+JSON.stringify(teachers,null,2))
+    res.render('teachers', {data: teachers})
   })
 })
 

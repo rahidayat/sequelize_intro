@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const model = require ('../models');
+const huruf = require ('../helpers/scoreletter')
 
 
 router.get('/', (req,res) => {
@@ -29,8 +30,11 @@ router.get('/:id/enrolledstudents', (req,res) => {
     order:[['Student','first_name', 'ASC']]
   })
   .then(rows => {
-    console.log('----------------------------------------'+JSON.stringify(rows, null, 2));
-    // res.render('enrolled-students', {conj: rows})
+    // console.log('----------------------------------------'+JSON.stringify(rows, null, 2));
+    rows.forEach(r=> {
+      r.letter = huruf(r.score)
+    })
+    res.render('enrolled-students', {conj: rows})
   })
   .catch(err=> {
     console.log('---------ERROR------------');
@@ -43,6 +47,7 @@ router.get('/:id/givescore', (req, res) => {
     include: [{all: true}]
   })
   .then(row => {
+
     res.render('givescore', {conj: row})
   })
 })

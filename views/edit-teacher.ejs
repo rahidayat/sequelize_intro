@@ -5,10 +5,7 @@
     <title></title>
   </head>
   <body>
-    <a href="/">Home</a>
-    <a href="/teachers">Teachers</a>
-    <a href="/subjects">Subjects</a>
-    <a href="/students">Students</a>
+    <%- include layout/nav-bar %>
     <br><br>
     <%=err%>
     <form class="" action="/teachers/edit/<%=data.id%>" method="post">
