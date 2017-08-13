@@ -14,17 +14,19 @@
     <br><br>
     <table border="1">
       <tbody>
-        <th>ID</th>
+        <th>No</th>
         <th>First Name</th>
         <th>Last Name</th>
         <th>Email</th>
+        <th>Actions</th>
         <th>Options</th>
-        <%data.forEach(d=> {%>
+        <% var i=1; data.forEach(d=> {%>
         <tr>
-          <td><%=d.id%></td>
+          <td><%=i++%></td>
           <td><%=d.first_name%></td>
           <td><%=d.last_name%></td>
           <td><%=d.email%></td>
+          <td><a href="students/<%=d.id%>/addsubject">Add Subject</a></td>
           <td><a href="students/edit/<%=d.id%>">Edit</a> |
             <a href="students/delete/<%=d.id%>" onclick="return confirm('delete this student?')">Delete</a></td>
         </tr>

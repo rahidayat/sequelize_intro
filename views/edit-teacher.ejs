@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <a href="/">Home</a>
+    <a href="/teachers">Teachers</a>
+    <a href="/subjects">Subjects</a>
+    <a href="/students">Students</a>
+    <br><br>
+    <%=err%>
+    <form class="" action="/teachers/edit/<%=data.id%>" method="post">
+      <fieldset>
+        <legend>Edit Teacher</legend>
+        <input type="text" name="first_name" value="<%=data.first_name%>"><br>
+        <input type="text" name="last_name" value="<%=data.last_name%>"><br>
+        <input type="text" name="email" value="<%=data.email%>" disabled><br>
+        <select name= "SubjectId" class="form_control">
+        <% data2.forEach(s => {
+          var selected = ""
+          if(data.SubjectId == s.id){
+            selected = "selected"
+          }%>
+        <option value="<%= s.id %>"<%= selected %>><%= s.subject_name %></option>
+        <% }) %>
+      </select><br><br>
+        <input type="submit" value="Update">
+      </fieldset>
+    </form>
+
+  </body>
+</html>

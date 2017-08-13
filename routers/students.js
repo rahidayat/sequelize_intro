@@ -4,7 +4,9 @@ const model = require ('../models');
 
 
 router.get('/', (req,res) => {
-  model.Student.findAll()
+  model.Student.findAll({
+    order: [['first_name', 'ASC']]
+  })
   .then(students => {
     // res.send('teacher')
     res.render('students', {data: students})
@@ -62,6 +64,28 @@ router.get('/delete/:id', (req,res) => {
     where: {id: req.params.id}
   })
   .then(()=> {
+    res.redirect('/students')
+  })
+})
+
+router.get('/:id/addsubject', (req,res)=> {
+  model.Student.findById(req.params.id)
+  .then(student=> {
+    model.Subject.findAll()
+    .then(subjects=> {
+      res.render('add-subject-to-student', {data1: student, data2:subjects})
+    })
+  })
+})
+
+router.post('/:id/addsubject', (req,res)=> {
+  model.StudentSubject.create({
+    StudentId: req.params.id,
+    SubjectId: req.body.SubjectId,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  })
+  .then(rows => {
     res.redirect('/students')
   })
 })

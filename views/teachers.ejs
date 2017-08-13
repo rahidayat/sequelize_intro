@@ -10,19 +10,29 @@
     <a href="/subjects">Subjects</a>
     <a href="/students">Students</a>
     <h1>Daftar Teachers</h1>
+    <a href="teachers/add">add Teacher</a>
     <br><br>
     <table border="1">
       <tbody>
-        <th>ID</th>
+        <th>No</th>
         <th>First Name</th>
         <th>Last Name</th>
         <th>Email</th>
-        <%data.forEach(d=> {%>
+        <th>Subject</th>
+        <th>Options</th>
+        <% var i=1; data.forEach(d=> {%>
         <tr>
-          <td><%=d.id%></td>
+          <td><%=i++%></td>
           <td><%=d.first_name%></td>
           <td><%=d.last_name%></td>
           <td><%=d.email%></td>
+          <td><% if (d.SubjectId != null) {%>
+                <%= d.Subject.subject_name %>
+              <%} else {%>
+                <%= 'Unassigned' %>
+              <%}%></td>
+          <td><a href="teachers/edit/<%=d.id%>">Edit</a> |
+            <a href="teachers/delete/<%=d.id%>" onclick="return confirm('delete this teacher?')">Delete</a></td>
         </tr>
         <%})%>
       </tbody>

@@ -13,15 +13,26 @@
     <br><br>
     <table border="1">
       <tbody>
-        <th>ID</th>
+        <th>No</th>
         <th>Subject Name</th>
-        <%data.forEach(d=> {%>
+        <th>Teacher</th>
+        <th>Actions</th>
+        <%var i=1; data.forEach(d=> {%>
         <tr>
-          <td><%=d.id%></td>
+          <td><%=i++%></td>
           <td><%=d.subject_name%></td>
+          <td><%var j = 1; d.Teachers.forEach(t => { %>
+                <%=j++ %>. <%= t.first_name %> <%=t.last_name %><br>
+                <% }) %></td>
+          <td><a href="subjects/<%=d.id%>/enrolledstudents">Enrolled Students</a></td>
         </tr>
         <%})%>
       </tbody>
     </table>
+    <br><br>
+    <form class="" action="/subjects" method="post">
+      <input type="text" name="subject_name" placeholder="nama subject">
+      <input type="submit" value="Add">
+    </form>
   </body>
 </html>
