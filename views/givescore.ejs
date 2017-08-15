@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <%- include layout/link %>
+    <%- include layout/title %>
+  </head>
+
+  <body>
+    <%- include layout/nav-bar %>
+    <div class="center-align">
+      <h4>Input Score</h4>
+    </div>
+    <div class="container">
+
+        Student Name: <%=conj[0].Student.first_name%> <%=conj[0].Student.last_name%> <br>
+        Subject Name: <%=conj[0].Subject.subject_name %> <br>
+      <form action="/subjects/<%=conj[0].id%>/givescore" method="post">
+        Score : <input type="text" name="score"><br>
+
+        <button type="submit" name="">Add score</button>
+        <br><br>
+      </form>
+    </div>
+    <%- include layout/script %>
+
+  </body>
+</html>

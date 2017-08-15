@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <%- include layout/link %>
+    <%- include layout/title %>
+  </head>
+  <body>
+    <%- include layout/nav-bar %>
+    <br><br>
+    <%=err%>
+    <form class="" action="/students/add" method="post">
+      <fieldset>
+        <legend>Add Student</legend>
+        <input type="text" name="first_name" placeholder="first name"><br>
+        <input type="text" name="last_name" placeholder="last name"><br>
+        <input type="text" name="email" placeholder="email"><br>
+        <input type="submit" value="Add">
+      </fieldset>
+    </form>
+    <%- include layout/script %>
+  </body>
+</html>

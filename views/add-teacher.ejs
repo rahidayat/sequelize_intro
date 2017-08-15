@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <%- include layout/link %>
+    <%- include layout/title %>
+  </head>
+  <body>
+    <%- include layout/nav-bar %>
+    <br><br>
+    <%=err%>
+    <form class="" action="/teachers/add" method="post">
+      <fieldset>
+        <legend>Add Teacher</legend>
+        <input type="text" name="first_name" placeholder="first name"><br>
+        <input type="text" name="last_name" placeholder="last name"><br>
+        <input type="text" name="email" placeholder="email"><br>
+        <label>Pilih Subject</label>
+          <select name= "SubjectId">
+            <% data2.forEach(s => { %>
+            <option value="<%= s.id %>"><%= s.subject_name %></option>
+            <% }) %>
+          </select><br><br>
+        <input type="submit" value="Add">
+      </fieldset>
+    </form>
+    <%- include layout/script %>
+  </body>
+</html>

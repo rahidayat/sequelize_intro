@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <%- include layout/link %>
+    <%- include layout/title %>
+  </head>
+  <body>
+    <%- include layout/side-nav %>
+
+    <% if(session.role) { %>
+      <h1>Welcome in Sekolah</h1>
+    <% } else { %>
+      <p style="color:red"><%=msg%></p>
+      <h1>Welcome, please log in or register first</h1>
+      <div class="container">
+
+        <fieldset>
+          <legend>Log In</legend>
+          <form action="/login" method="post">
+            <input type="text" name="username" placeholder="username"><br>
+            <input type="text" name="password" placeholder="password"><br>
+            <button type="submit" name="button">Log in</button>
+          </form>
+        </fieldset>
+      </div>
+      <br><br>
+      <!--form register user-->
+      <div class="container">
+
+        <fieldset>
+          <legend>Register</legend>
+          <form action="/register" method="post">
+            <input type="text" name="username" placeholder="username"><br>
+            <input type="text" name="password" placeholder="password"><br>
+            <select class="" name="role">
+              <option value="teacher">Teacher</option>
+              <option value="academic">Academic</option>
+              <option value="headmaster">Headmaster</option>
+            </select>
+            <button type="submit" name="button">Register</button>
+          </form>
+        </fieldset>
+      </div>
+    <% } %>
+
+    <%- include layout/script %>
+  </body>
+</html>
