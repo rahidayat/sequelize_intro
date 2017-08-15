@@ -1,10 +1,24 @@
 <nav>
   <div class="nav-wrapper blue">
     <a href="/" class="brand-logo">Home</a>
+    <% if(session.role == 'headmaster') { %>
     <ul id="nav-mobile" class="right">
       <li><a href="/teachers">Teachers</a></li>
       <li><a href="/subjects">Subjects</a></li>
       <li><a href="/students">Students</a></li>
+      <li><a href="/logout">Log Out</a></li>
     </ul>
+    <% } else if(session.role == 'academic') {%>
+    <ul id="nav-mobile" class="right">
+      <li><a href="/subjects">Subjects</a></li>
+      <li><a href="/students">Students</a></li>
+      <li><a href="/logout">Log Out</a></li>
+    </ul>
+    <% } else if(session.role == 'teacher') {%>
+    <ul id="nav-mobile" class="right">
+      <li><a href="/students">Students</a></li>
+      <li><a href="/logout">Log Out</a></li>
+    </ul>
+    <% }%>
   </div>
 </nav>

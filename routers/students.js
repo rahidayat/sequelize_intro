@@ -1,7 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const model = require ('../models');
+const session = require('express-session');
 
+router.use((req,res,next) => {
+  if(req.session.role == 'teacher' || req.session.role == 'academic' || req.session.role == 'headmaster') {
+    next()
+  } else {
+    // res.send('maaf tidak ada akses ke halaman ini')
+    // res.sendStatus(401)
+    res.render('index', {session: req.session, msg:'Anda Tidak punya askes ke halaman Student'})
+  }
+})
 
 router.get('/', (req,res) => {
   model.Student.findAll({
@@ -9,13 +19,13 @@ router.get('/', (req,res) => {
   })
   .then(students => {
     // res.send('teacher')
-    res.render('students', {data: students})
+    res.render('students', {data: students, session:req.session})
   })
 })
 
 router.get('/add', (req,res) => {
   // console.log(req.query.x);
-  res.render('add-student', {err: req.query.x})
+  res.render('add-student', {session:req.session, err: req.query.x})
 })
 
 router.post('/add', (req,res) => {
@@ -40,7 +50,7 @@ router.get('/edit/:id', (req,res) => {
   model.Student.findById(req.params.id)
   .then(row => {
     // res.send('edit')
-    res.render('edit-student', {data: row})
+    res.render('edit-student', {data: row, session:req.session})
   })
 })
 
@@ -73,7 +83,7 @@ router.get('/:id/addsubject', (req,res)=> {
   .then(student=> {
     model.Subject.findAll()
     .then(subjects=> {
-      res.render('add-subject-to-student', {data1: student, data2:subjects})
+      res.render('add-subject-to-student', {data1: student, data2:subjects, session:req.session})
     })
   })
 })

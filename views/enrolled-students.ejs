@@ -7,36 +7,35 @@
   </head>
   <body>
     <%- include layout/nav-bar %>
-    <h1><%= conj[0].Subject.subject_name %></h1>
 
-
-    <a href="/subjects">return to Subjects List</a>
-
-    <div class="title">
-      <table>
-        <tr>
-          <th>No</th>
-          <th>Name</th>
-          <th>Score</th>
-          <th>Score Letter</th>
-        </tr>
-        <%var i=1; conj.forEach(ss => { %>
-        <tr>
-          <td><%=i++%></td>
-          <td><%=ss.Student.first_name%> <%=ss.Student.last_name%></td>
-          <td>
-            <% if (ss.score==null) { %>
-              <a href="/subjects/<%=ss.id%>/givescore">Give Score</a>
-            <% } else{%>
-              <%=ss.score%>
-            <%}%>
-              </td>
-            <td><%=ss.letter%></td>
-        </tr>
-        <% }) %>
-      </table>
-
-    </div>
+      <div class="center-align">
+        <h4><%= conj[0].Subject.subject_name %></h4>
+        <a href="/subjects">return to Subjects List</a>
+      </div>
+      <div class="container">
+        <table>
+          <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Score</th>
+            <th>Score Letter</th>
+          </tr>
+          <%var i=1; conj.forEach(ss => { %>
+            <tr>
+              <td><%=i++%></td>
+              <td><%=ss.Student.first_name%> <%=ss.Student.last_name%></td>
+              <td>
+                <% if (ss.score==null) { %>
+                  <a href="/subjects/<%=ss.id%>/givescore">Give Score</a>
+                  <% } else{%>
+                    <%=ss.score%>
+                    <%}%>
+                  </td>
+              <td><%=ss.letter%></td>
+            </tr>
+          <% }) %>
+        </table>
+      </div>
     <%- include layout/script %>
   </body>
 </html>
